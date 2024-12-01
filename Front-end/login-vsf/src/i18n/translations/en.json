@@ -1,0 +1,14 @@
+{
+    "translation": {
+        "loginToSchedule": "Scheduling Login",
+        "selectLanguage": "Select language",
+        "firstUsingService": "If this is your first time using this service, please click on new user",
+        "emailIdent": "Email identification",
+        "password": "Password",
+        "insertextImg": "Enter the text that appears in the image",
+        "continue": "Continue",
+        "forgotPassword": "Forgot your password?",
+        "newUser": "New user?",
+        "registrationExpire": "Disclaimer: The registration will expire after 100 inactive days from the last appointment date."
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "translation": {
+        "loginToSchedule": "Login de agendamento",
+        "selectLanguage": "Selecionar linguagem",
+        "firstUsingService": "Se é a primeira vez que que usa este serviço, por favor clique em novo usuário.",
+        "emailIdent": "Identificação de email",
+        "password": "Palavra passe",
+        "insertextImg": "Insira o texto que aparece na imagem",
+        "continue": "Continuar",
+        "forgotPassword": "Esqueceu a palavra chave",
+        "newUser": "Novo utilizador",
+        "registrationExpire": "Aviso Legal: O registro irá expirar após 100 dias inativos a partir da última data de agendamento."
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "translation": {
+        "loginToSchedule": "Connexion sur rendez-vous.",
+        "selectLanguage": "Sélectionnez la langue",
+        "firstUsingService": "Si c'est la première fois que vous utilisez ce service, veuillez cliquer sur nouvel utilisateur",
+        "emailIdent": "Identifiant de courrier électronique",
+        "password": "Mot de passe",
+        "insertextImg": "Saisissez le texte qui apparaît dans l'image",
+        "continue": "Continuer",
+        "forgotPassword": "Vous avez oublié le mot-clé ?",
+        "newUser": "Nouvel utilisateur ?",
+        "registrationExpire": "Avertissement : L'inscription expirera après 100 jours d'inactivité à compter de la dernière date de réservation."
+    }
+}
