@@ -15,7 +15,7 @@ const authLogin = (req, res, next) => {
 
         const decoded = jwt.verify(token.replace('Bearer ', ''), JWT_SECRET);
 
-        const idUser = decoded.id;
+        //const idUser = decoded.id;
     } catch (error) {
         res.status(500).json({
             message: 'Erro no servidor, tente novamente',

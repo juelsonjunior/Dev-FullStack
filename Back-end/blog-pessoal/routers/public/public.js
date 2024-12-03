@@ -14,8 +14,17 @@ const dateAdmin = {
 
 router.get('/list-articles', (req, res) => {
     try {
+        const { idArticle } = req.query;
         const articles = listAllDate('articles.json');
-        res.json(articles);
+
+        if (idArticle && idArticle > 0) {
+            const filterArticles = articles.find(
+                (article) => article.id == idArticle
+            );
+            return res.json(filterArticles);
+        } else {
+            return res.json(articles);
+        }
     } catch (error) {
         res.status(500).json({
             message: 'Erro ao servidor, listar artigos',
@@ -23,20 +32,31 @@ router.get('/list-articles', (req, res) => {
         });
     }
 });
-
 router.post('/login', (req, res) => {
     try {
         const { email, password } = req.body;
         const { idAd, emailAd, passwordAd } = dateAdmin;
 
-        if (email != emailAd) {
-            return res.json({ message: 'Email de admin incorreto' });
-        }
-        if (password != passwordAd) {
-            return res.json({ message: 'Senha do admin incorreta' });
+        if (email == '' || password == '') {
+            return res
+                .status(400)
+                .json({ message: 'Obrigatorio preencher os campos' });
         }
 
-        const token = jwt.sign({ id: idAd }, JWT_SECRET, { expiresIn: '1d' });
+        if (email != emailAd) {
+            return res
+                .status(400)
+                .json({ message: 'Email de admin incorreto' });
+        }
+        if (password != passwordAd) {
+            return res
+                .status(400)
+                .json({ message: 'Senha do admin incorreta' });
+        }
+
+        const token = jwt.sign({ id: idAd }, JWT_SECRET, {
+            expiresIn: '10m',
+        });
         res.status(200).json(token);
     } catch (error) {
         res.status(500).json({

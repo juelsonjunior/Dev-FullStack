@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import api from '../../services/api';
+import { Toaster, toast } from 'sonner';
 
 export function NewArticle() {
     const title = useRef();
@@ -11,7 +12,7 @@ export function NewArticle() {
 
             if (!token) {
                 return console.log(
-                    'Falha ao retornar o toque para acessar a rota new-aticle'
+                    'Falha ao retornar o token para acessar a rota new-aticle'
                 );
             }
 
@@ -28,22 +29,23 @@ export function NewArticle() {
                 }
             );
 
-            if (response.status == 200) {
-                console.log(response.data.message);
+            if (response.status == 201) {
+                toast.success(response.data.message);
             } else {
-                console.log(response.data.message);
+                toast.error(response.data.message);
             }
         } catch (error) {
             if (error.response) {
-                console.log(error.response.data.message);
+                toast.error(error.response.data.message);
             } else {
-                console.log('Erro ao cadastra artigo');
+                toast.error('Erro ao cadastra artigo');
             }
         }
     };
 
     return (
         <div className="flex justify-center w-lvw">
+            <Toaster position="top-center" richColors closeButton/>
             <div className="flex gap-3 flex-col w-1/2 mt-5">
                 <h3 className="text-slate-800 text-3xl">Novo artigo</h3>
                 <input

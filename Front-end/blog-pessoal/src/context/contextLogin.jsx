@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from 'react';
 import api from '../services/api';
+import { toast } from 'sonner';
 
 export const ContextLogin = createContext();
 
@@ -17,14 +18,18 @@ export const LoginProvider = ({ children }) => {
             });
 
             if (response.status != 200) {
-                return console.log('Erro: não foii retornado um token');
+                return toast.error(response.data.message);
             }
 
             sessionStorage.setItem('token', response.data);
             setIsAuthenticated(true);
             sessionStorage.setItem('isAuthenticated', 'true');
         } catch (error) {
-            console.log('Erro ao efetuar login no painel do Admin');
+            if (error.response) {
+                toast.error(error.response.data.message);
+            } else {
+                toast.error('Erro ao efetuar login');
+            }
         }
     };
 
@@ -43,6 +48,7 @@ export const LoginProvider = ({ children }) => {
         const intervalId = setInterval(() => {
             if (!isTokenValid()) {
                 handleLogout();
+                
             }
         }, 60000);
         return () => clearInterval(intervalId);
@@ -68,7 +74,7 @@ const isTokenValid = () => {
         const expireyDate = exp * 1000;
         return Date.now() < expireyDate;
     } catch (error) {
-        console.log('Token inválido:', error);
+        toast.error('Token inválido:', error);
         return false;
     }
 };

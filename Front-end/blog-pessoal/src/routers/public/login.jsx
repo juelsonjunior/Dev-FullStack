@@ -15,11 +15,8 @@ function Login() {
     };
     useEffect(() => {
         if (isAuthenticated) {
-            email.current.value = '';
-            password.current.value = '';
             navigate('/admin');
         }
-        
     }, [isAuthenticated]);
 
     return (

@@ -42,13 +42,20 @@ router.post('/new-article', (req, res) => {
     }
 });
 
-router.put('/edit-article', (req, res) => {
+router.put('/edit-article/:id', (req, res) => {
     try {
-        const { idArticle, titleArticle, contentArticle } = req.body;
+        const { id } = req.params;
+        const { titleArticle, contentArticle } = req.body;
         const articles = listAllDate('articles.json');
 
+        if (titleArticle == '' || contentArticle == '') {
+            return res
+                .status(400)
+                .json({ message: 'Obrigatorio prencher todos campos' }); 
+        }
+
         const findIdArticle = articles.find(
-            (article) => article.id == idArticle
+            (article) => article.id == id.replace(":", "")
         );
 
         const findDuplicate = articles.find(
@@ -71,6 +78,7 @@ router.put('/edit-article', (req, res) => {
 
         writeDataFile(articles, 'articles.json');
         res.status(201).json({ message: 'Artigo editado com sucesso' });
+        res.status(200).json(findIdArticle);
     } catch (error) {
         res.status(500).json({ message: 'Erro ao editar o artigo', error });
     }
