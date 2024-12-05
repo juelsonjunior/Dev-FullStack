@@ -5,7 +5,7 @@ import authLogin from './middleware/authLogin.js';
 import cors from 'cors';
 
 const app = express();
-app.use(express.json());
+app.use(express.json({limit: "1KB"}));
 app.use(cors());
 
 app.use('/', routerPublic);
