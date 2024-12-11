@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.link-navbar{
+    @apply hover:cursor-pointer hover:underline hover:text-green-600 duration-300 ease-in-out transition-all
+}
+.input-contact{
+    @apply w-full outline-none border-2 rounded-md px-3 py-2 focus:bg-slate-300
+}
