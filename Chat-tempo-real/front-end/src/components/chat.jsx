@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useRef, useState } from 'react';
 import io from 'socket.io-client';
 function Chat() {
-    const [nameUser, setNameUser] = useState();
+    const [nameUser, setNameUser] = useState("juelson junior");
     const messageInput = useRef('');
     const [messageChat, setMessageChat] = useState();
     const socket = io.connect('http://localhost:3001');
@@ -80,7 +80,7 @@ function Chat() {
                                 <div className="flex items-end flex-col px-5  gap-5">
                                     <div className="bg-violet-500 rounded-full p-3 w-2/4">
                                         <p className="text-white text-sm">
-                                            {messageChat}
+                                            Teste de mensagem
                                         </p>
                                     </div>
                                 </div>
