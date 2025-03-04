@@ -65,8 +65,5 @@ router.post('/login', async (req, res) => {
     }
 });
 
-//juelson
-//hs6bJsDMDDfk1NM8
-//
 
 export default router;
